@@ -1,0 +1,19 @@
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn__icon {
+    @include transition (transform);
+
+    .close-btn:hover &,
+    .close-btn:focus & {
+        transform: scale(1.3);
+    }
+}

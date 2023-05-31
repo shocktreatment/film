@@ -1,0 +1,18 @@
+@import './utils/vars';
+@import './utils/mixins';
+
+@import './base/reset';
+@import './base/common';
+
+@import './components/closeBtn';
+@import './components/tui-pagination';
+@import './components/container';
+
+@import './layouts/header';
+@import './layouts/slider';
+@import './layouts/gallery';
+@import './layouts/footer';
+@import './layouts/modal';
+@import './layouts/auth';
+@import './layouts/footer-modal';
+@import './layouts/themeswitch';

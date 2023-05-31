@@ -1,0 +1,153 @@
+//Міксин для центрування флекс елемента
+@mixin flexCentered($type: flex) {
+  display: $type;
+  justify-content: center;
+  align-items: center;
+}
+
+//Міксин для побудови сітки
+@mixin flexGapWrap($type: flex, $gap, $wrap: nowrap) {
+  display: $type;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+// ------------------- TRANSITION MIXIN -------------------
+@mixin transition($property, $sproperty: false, $tproperty: false) {
+  $duration: $dur-time;
+  $timing-function: $time-fun;
+
+  @if $sproperty {
+    @if $tproperty {
+      transition: $property $duration $timing-function, $sproperty $duration $timing-function,
+        $tproperty $duration $timing-function;
+    } @else {
+      transition: $property $duration $timing-function, $sproperty $duration $timing-function;
+    }
+  } @else {
+    transition: $property $duration $timing-function;
+  }
+}
+
+// -------------------- FONTS MIXIN --------------------
+@mixin fonts($fw, $fs, $lh, $ls: false, $tt: false) {
+  font-weight: $fw;
+  font-size: $fs + px;
+  line-height: setLineHeight($lh, $fs);
+  @if $ls {
+    letter-spacing: $ls + em;
+  }
+  @if $tt {
+    text-transform: $tt;
+  }
+}
+// Calculating line-height value to multiplier
+@function setLineHeight($lh, $fs) {
+  $lh-no-units: strip-unit($lh);
+  $fs-no-units: strip-unit($fs);
+
+  $lh-value: calc($lh-no-units / $fs-no-units);
+
+  $line-height: decimal-round($lh-value, 2);
+
+  @return $line-height;
+}
+
+// Delete unit from incoming value
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return calc($number / ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+  @if $mode == round {
+    @return calc(round($number * $n) / $n);
+  } @else if $mode == ceil {
+    @return calc(ceil($number * $n) / $n);
+  } @else if $mode == floor {
+    @return calc(floor($number * $n) / $n);
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+// -------------------MEDIA QUERY MIXIN -----------------
+@mixin mq($type) {
+  $small: 320px;
+  $mob: 480px;
+  $tab: 768px;
+  $desk: 1280px;
+
+  @if $type == 'small' {
+    @media screen and (min-width: $small) {
+      @content;
+    }
+  }
+  @if $type == 'pre-mob' {
+    @media screen and (max-width: #{$mob - 1}) {
+      @content;
+    }
+  }
+  @if $type == 'mob-only' {
+    @media screen and (min-width: $mob) and (max-width: #{$tab - 1}) {
+      @content;
+    }
+  }
+  @if $type == 'mob' {
+    @media screen and (min-width: $mob) {
+      @content;
+    }
+  }
+  @if $type == 'pre-tab' {
+    @media screen and (max-width: #{$tab - 1}) {
+      @content;
+    }
+  }
+  @if $type == 'tab-only' {
+    @media screen and (min-width: $tab) and (max-width: #{$desk - 1}) {
+      @content;
+    }
+  }
+  @if $type == 'tab' {
+    @media screen and (min-width: $tab) {
+      @content;
+    }
+  }
+  @if $type == 'not-desk' {
+    @media screen and (max-width: #{$desk - 1}) {
+      @content;
+    }
+  }
+  @if $type == 'desk' {
+    @media screen and (min-width: $desk) {
+      @content;
+    }
+  }
+
+  @if $type == 'retina' {
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      @content;
+    }
+  }
+}

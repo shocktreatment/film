@@ -1,0 +1,38 @@
+<header class="header header-bg-lib">
+  <div class="header__container">
+    <nav class="header__menu menu">
+      <a href="./index.html" class="header__logo logo">
+        <svg width="24" height="24" class="header__icon">
+          <use href="./images/sprite.svg#film" />
+        </svg>
+        <span class="logo__name">Filmoteka</span>
+        <div class="logo__santa"></div>
+      </a>
+
+      <ul class="menu__list">
+        <li class="menu__item">
+          <a href="./index.html" class="menu__link">Home</a>
+        </li>
+        <li class="menu__item">
+          <a href="./my-library.html" class="menu__link menu__link--active">My library</a>
+        </li>
+        <li class="menu__item">
+          <a href="#" class="menu__link js-log-out">LOG OUT</a>
+        </li>
+        <li class="menu__item">
+          <p class="menu__link js-nickname"></p>
+        </li>
+      </ul>
+      <include src="./partials/theme-switch.html"></include>
+    </nav>
+
+    <ul class="library__btn-list">
+      <li class="btn-list__item">
+        <button type="button" class="btn btn__library--active" id="btn__watched">watched</button>
+      </li>
+      <li class="btn-list__item">
+        <button type="button" class="btn" id="btn__queue">queue</button>
+      </li>
+    </ul>
+  </div>
+</header>

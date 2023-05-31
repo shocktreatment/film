@@ -1,0 +1,60 @@
+.footer {
+  background-color: $highlightColor;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+  @include fonts(400, 14, 16);
+
+  @include mq(tab) {
+    @include fonts(400, 16, 19);
+  }
+  @include mq(desk) {
+    padding-bottom: 28px;
+  }
+}
+.footer__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  @include mq(mob) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 0px;
+  }
+}
+
+.footer__btn {
+  text-decoration: underline;
+  cursor: pointer;
+  color: $footerTextColor;
+
+  &:hover {
+    color: $accentColor;
+  }
+}
+
+.footer__icon {
+  animation: heartwork 1400ms cubic-bezier(0.25, 0.1, 0.25, 1.5) infinite;
+}
+
+@keyframes heartwork {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.4);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

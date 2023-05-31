@@ -1,0 +1,57 @@
+<div class="backdrop">
+  <div class="modal" data-modal>
+    <button class="close-btn" data-modal-close>
+      <svg class="close-btn__icon" width="30" height="30">
+        <use href="./images/sprite.svg#close"/>
+      </svg>
+    </button>
+    <div class="modal__wrap">
+      <picture>
+        <source srcset="./images/desktop.jpg" media="(min-width: 1280px)" />
+        <source srcset="./images/tablet.jpg" media="(min-width: 768px)" />
+        <source srcset="./images/mobile.jpg" media="(max-width: 767px)" />
+        <img loading="lazy" class="modal__picture" src="./images/mobile.jpg" alt="Poster" />
+      </picture>
+      <div class="modal__info">
+        <h2 class="modal__title">Film name</h2>
+        <table class="modal__statistic">
+          <tbody>
+            <tr>
+              <td class="modal__type">Vote / Votes</td>
+              <td class="modal__value">
+                <span class="modal__value--accent">Vote</span>
+                /
+                <span class="modal__value--highlight">Votes</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="modal__type">Popularity</td>
+              <td class="modal__value">Popularity</td>
+            </tr>
+            <tr>
+              <td class="modal__type">Original Title</td>
+              <td class="modal__value modal__value--uppercase">Original Title</td>
+            </tr>
+            <tr>
+              <td class="modal__type">Genre</td>
+              <td class="modal__value">Genre</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="modal__about">About</p>
+        <p class="modal__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </p>
+        <ul class="modal__buttons">
+          <li><button type="button" class="modal__button js-btn-watched">Add to watched</button></li>
+          <li><button type="button" class="modal__button js-btn-queue">Add to queue</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

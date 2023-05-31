@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), local('Roboto-Regular'), url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), local('Roboto-Medium'), url("../fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.library-section {
+  margin: 20px 0 40px;
+  @include mq(mob) {
+    margin: 60px 0 60px;
+  }
+}
+
+.text-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

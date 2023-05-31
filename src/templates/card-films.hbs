@@ -1,0 +1,34 @@
+{{#each this}}
+  <li class='card__item' data-action='{{id}}'>
+    <div class='thumb'>
+      <img
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        alt='{{title}} {{name}}'
+        width='100%'
+        loading='lazy'
+        data-id='{{id}}'
+        onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
+      />
+    </div>
+    <div class='card_information'>
+      <h2 class='card__title'>
+        {{title}} {{name}}
+      </h2>
+      <p class='card__text'>
+        <span>
+          {{#each genres}}
+            {{#if @last}}
+              {{name}}
+            {{else}}
+              {{name}},
+            {{/if}}
+          {{/each}}
+        </span>
+        |
+        <span>
+          {{release_date}}
+        </span>
+      </p>
+    </div>
+  </li>
+{{/each}}

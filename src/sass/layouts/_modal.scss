@@ -1,0 +1,214 @@
+.backdrop {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $backdropColor;
+  opacity: 0;
+  pointer-events: none;
+  @include transition(opacity);
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
+
+.is-hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 552px;
+  padding: 48px 20px 20px;
+  background-color: $whiteColor;
+  transform: translate(-50%, -100%);
+  @include transition(transform);
+
+  overflow-y: scroll;
+
+  @include mq(mob) {
+    box-sizing: border-box;
+    width: 450px; //
+  }
+
+  @include mq(tab) {
+    width: 704px;
+    height: auto;
+    padding: 40px 72px 40px 36px;
+    overflow-y: hidden;
+  }
+
+  @include mq(desk) {
+    width: 806px;
+    padding: 40px 12px;
+  }
+
+  .backdrop.is-open & {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modal__wrap {
+  @include mq(tab) {
+    display: flex;
+    gap: 68px;
+  }
+
+  @include mq(desk) {
+    gap: 16px;
+  }
+}
+
+.modal__picture {
+  margin: 0 auto 20px;
+  border-radius: 5px;
+  width: 240px;
+  height: 357px;
+  object-fit: cover;
+  pointer-events: none; //disable global efect hover pictures in modal windows
+
+  @include mq(tab) {
+    margin: 0;
+    width: 264px;
+    height: 373.55px;
+  }
+
+  @include mq(desk) {
+    width: 375px;
+    height: 478px;
+  }
+}
+
+.modal__info {
+  @include mq(tab) {
+    width: 264px;
+  }
+
+  @include mq(desk) {
+    width: 391px;
+  }
+}
+
+.modal__title {
+  margin-bottom: 12px;
+  @include fonts(500, 20, 23, false, uppercase);
+
+  @include mq(desk) {
+    @include fonts(500, 30, 35);
+  }
+}
+
+.modal__statistic {
+  width: 100%;
+  margin-bottom: 12px;
+  @include fonts(500, 12, 16);
+
+  border-spacing: 0 8px;
+}
+
+.modal__type {
+  width: 108px;
+  color: $modalTypesColor;
+}
+
+.modal__value {
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &--accent {
+    padding: 1px 10px;
+    color: $whiteColor;
+    background-color: $accentColor;
+    border-radius: 5px;
+  }
+
+  &--highlight {
+    padding: 1px 4px;
+    background-color: $highlightColor;
+    border-radius: 5px;
+  }
+}
+
+.modal__numbers {
+  @include fonts(500, 12, 16);
+  padding: 1px 10px;
+  border-radius: 5px;
+  color: $whiteColor;
+  background-color: $accentColor;
+}
+
+.modal__about {
+  margin-bottom: 8px;
+  @include fonts(500, 12, 16, false, uppercase);
+}
+
+.modal__description {
+  width: 100%;
+  margin-bottom: 20px;
+  @include fonts(500, 12, 20);
+}
+
+.modal__buttons {
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+  @include mq(tab) {
+    justify-content: start;
+    gap: 15px;
+  }
+}
+
+.modal__button {
+  width: 110px;
+  height: 44px;
+  padding: 6px;
+  @include fonts(500, 12, 16, false, uppercase);
+  background-color: inherit;
+  border: 1px solid $blackColor;
+  border-radius: 5px;
+  cursor: pointer;
+  @include transition(background-color, color);
+
+  @include mq(tab) {
+    width: 125px;
+  }
+
+  @include mq(desk) {
+    width: 136px;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $accentColor;
+    background-color: $accentColor;
+    color: $whiteColor;
+  }
+}
+
+.modal__player {
+  animation: 4s show;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal__iframe {
+  background-color: rgb(248, 228, 228);
+  border-radius: 15px 0;
+}
